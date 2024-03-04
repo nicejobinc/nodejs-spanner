@@ -204,6 +204,7 @@ describe('SessionPool', () => {
 
     describe('options', () => {
       it('should apply defaults', () => {
+        assert.strictEqual(sessionPool.options.createTimeout, 60000);
         assert.strictEqual(sessionPool.options.acquireTimeout, Infinity);
         assert.strictEqual(sessionPool.options.concurrency, Infinity);
         assert.strictEqual(sessionPool.options.fail, false);
@@ -773,6 +774,14 @@ describe('SessionPool', () => {
       await sessionPool._createSessions(OPTIONS);
       const [options] = stub.lastCall.args;
       assert.strictEqual(options.databaseRole, databaseRole);
+    });
+
+    it('should pass the session create timeout', async () => {
+      const createTimeout = 180000;
+      sessionPool.options.createTimeout = createTimeout;
+      await sessionPool._createSessions(OPTIONS);
+      const [options] = stub.lastCall.args;
+      assert.strictEqual(options.gaxOptions.timeout, createTimeout);
     });
 
     it('should make multiple requests if needed', async () => {

@@ -123,6 +123,8 @@ export interface SessionPoolInterface extends EventEmitter {
  * Session pool configuration options.
  *
  * @typedef {object} SessionPoolOptions
+ * @property {number} [createTimeout=60000] Time in milliseconds before
+ *     timing out trying to create sessions.
  * @property {number} [acquireTimeout=Infinity] Time in milliseconds before
  *     giving up trying to acquire a session. If the specified value is
  *     `Infinity`, a timeout will not occur.
@@ -147,6 +149,7 @@ export interface SessionPoolInterface extends EventEmitter {
  *     least one more session is needed.
  */
 export interface SessionPoolOptions {
+  createTimeout?: number;
   acquireTimeout?: number;
   concurrency?: number;
   fail?: boolean;
@@ -166,6 +169,7 @@ export interface SessionPoolOptions {
 }
 
 const DEFAULTS: SessionPoolOptions = {
+  createTimeout: 60000,
   acquireTimeout: Infinity,
   concurrency: Infinity,
   fail: false,
@@ -725,6 +729,7 @@ export class SessionPool extends EventEmitter implements SessionPoolInterface {
   async _createSessions(amount: number): Promise<void> {
     const labels = this.options.labels!;
     const databaseRole = this.options.databaseRole!;
+    const timeout = this.options.createTimeout!;
 
     if (amount <= 0) {
       return;
@@ -741,6 +746,7 @@ export class SessionPool extends EventEmitter implements SessionPoolInterface {
           count: amount,
           labels: labels,
           databaseRole: databaseRole,
+          gaxOptions: { timeout },
         });
 
         amount -= sessions.length;
