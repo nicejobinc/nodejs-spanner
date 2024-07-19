@@ -27,6 +27,7 @@ and automatic, synchronous replication for high availability.
   * [Backups-restore](#backups-restore)
   * [Backups-update](#backups-update)
   * [Backups](#backups)
+  * [Batch Write](#batch-write)
   * [Batch](#batch)
   * [CRUD](#crud)
   * [Creates a new database with a specific default leader](#creates-a-new-database-with-a-specific-default-leader)
@@ -37,6 +38,7 @@ and automatic, synchronous replication for high availability.
   * [Updates the default leader of an existing database](#updates-the-default-leader-of-an-existing-database)
   * [Updates a Cloud Spanner Database.](#updates-a-cloud-spanner-database.)
   * [Datatypes](#datatypes)
+  * [Runs an execute sql request with directed read options](#runs-an-execute-sql-request-with-directed-read-options)
   * [Delete using DML returning.](#delete-using-dml-returning.)
   * [Insert using DML returning.](#insert-using-dml-returning.)
   * [Update using DML returning.](#update-using-dml-returning.)
@@ -55,6 +57,7 @@ and automatic, synchronous replication for high availability.
   * [Deletes a user-managed instance configuration.](#deletes-a-user-managed-instance-configuration.)
   * [Lists the instance configuration operations.](#lists-the-instance-configuration-operations.)
   * [Updates a user-managed instance configuration.](#updates-a-user-managed-instance-configuration.)
+  * [Creates a instance with autoscaling config.](#creates-a-instance-with-autoscaling-config.)
   * [Instance-with-processing-units](#instance-with-processing-units)
   * [Instance](#instance)
   * [Json-add-column](#json-add-column)
@@ -62,6 +65,7 @@ and automatic, synchronous replication for high availability.
   * [Json-update-data](#json-update-data)
   * [Lists all databases on the selected instance](#lists-all-databases-on-the-selected-instance)
   * [Lists all the available instance configs for the selected project.](#lists-all-the-available-instance-configs-for-the-selected-project.)
+  * [Executes request with max commit delay](#executes-request-with-max-commit-delay)
   * [Numeric-add-column](#numeric-add-column)
   * [Numeric-query-parameter](#numeric-query-parameter)
   * [Numeric-update-data](#numeric-update-data)
@@ -89,6 +93,10 @@ and automatic, synchronous replication for high availability.
   * [Alters a sequence in a PostgreSQL database.](#alters-a-sequence-in-a-postgresql-database.)
   * [Creates sequence in PostgreSQL database.](#creates-sequence-in-postgresql-database.)
   * [Drops a sequence in PostgreSQL database.](#drops-a-sequence-in-postgresql-database.)
+  * [Proto-query-data](#proto-query-data)
+  * [Creates a new database with a proto column and enum](#creates-a-new-database-with-a-proto-column-and-enum)
+  * [Proto-update-data-dml](#proto-update-data-dml)
+  * [Proto-update-data](#proto-update-data)
   * [Queryoptions](#queryoptions)
   * [Quickstart](#quickstart)
   * [Read data with database role](#read-data-with-database-role)
@@ -347,6 +355,23 @@ __Usage:__
 
 
 
+### Batch Write
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/batch-write.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/batch-write.js,samples/README.md)
+
+__Usage:__
+
+
+`node batch-write.js <INSTANCE_ID> <DATABASE_ID> <PROJECT_ID>`
+
+
+-----
+
+
+
+
 ### Batch
 
 View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/batch.js).
@@ -510,6 +535,23 @@ __Usage:__
 
 
 `node samples/datatypes.js`
+
+
+-----
+
+
+
+
+### Runs an execute sql request with directed read options
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/directed-reads.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/directed-reads.js,samples/README.md)
+
+__Usage:__
+
+
+`node directed-reads.js <INSTANCE_ID> <DATABASE_ID> <PROJECT_ID>`
 
 
 -----
@@ -823,6 +865,23 @@ __Usage:__
 
 
 
+### Creates a instance with autoscaling config.
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/instance-with-autoscaling-config.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/instance-with-autoscaling-config.js,samples/README.md)
+
+__Usage:__
+
+
+`node instance-with-autoscaling-config.js <INSTANCE_ID> <PROJECT_ID>`
+
+
+-----
+
+
+
+
 ### Instance-with-processing-units
 
 View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/instance-with-processing-units.js).
@@ -935,6 +994,23 @@ __Usage:__
 
 
 `node list-instance-configs.js <PROJECT_ID>`
+
+
+-----
+
+
+
+
+### Executes request with max commit delay
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/max-commit-delay.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/max-commit-delay.js,samples/README.md)
+
+__Usage:__
+
+
+`node max-commit-delay.js <INSTANCE_ID> <DATABASE_ID> <PROJECT_ID>`
 
 
 -----
@@ -1394,6 +1470,74 @@ __Usage:__
 
 
 `node pg-sequence-drop.js <INSTANCE_ID> <DATABASE_ID> <PROJECT_ID>`
+
+
+-----
+
+
+
+
+### Proto-query-data
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/proto-query-data.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/proto-query-data.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/proto-query-data.js`
+
+
+-----
+
+
+
+
+### Creates a new database with a proto column and enum
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/proto-type-add-column.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/proto-type-add-column.js,samples/README.md)
+
+__Usage:__
+
+
+`node proto-type-add-column.js <INSTANCE_ID> <DATABASE_ID> <PROJECT_ID>`
+
+
+-----
+
+
+
+
+### Proto-update-data-dml
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/proto-update-data-dml.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/proto-update-data-dml.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/proto-update-data-dml.js`
+
+
+-----
+
+
+
+
+### Proto-update-data
+
+View the [source code](https://github.com/googleapis/nodejs-spanner/blob/main/samples/proto-update-data.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-spanner&page=editor&open_in_editor=samples/proto-update-data.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/proto-update-data.js`
 
 
 -----

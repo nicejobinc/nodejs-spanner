@@ -1087,7 +1087,9 @@ export class SessionPool extends EventEmitter implements SessionPoolInterface {
    * @private
    */
   _stopHouseKeeping(): void {
-    clearInterval(this._pingHandle);
-    clearInterval(this._evictHandle);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    clearInterval(this._pingHandle as any);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    clearInterval(this._evictHandle as any);
   }
 }
